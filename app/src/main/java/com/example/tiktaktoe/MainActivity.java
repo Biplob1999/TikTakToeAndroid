@@ -201,15 +201,13 @@ public class MainActivity extends AppCompatActivity {
      * @return - boolean true if the player has won the match, else boolean false
      */
     private boolean checkWin(int pos) {
-        if (pos % 4 == 0) {
+        if (pos % 4 == 0 && state[0] == state[4] && state[4] == state[8]) {
             //principle diagonal checking
-            if (state[0] == state[4] && state[4] == state[8]) {
-                return true;
-            }
-            if (pos == 4 && (state[2] == state[4] && state[4] == state[6])) {
-                //center box clicked and non principle diagonal checking
-                    return true;
-            }
+            return true;
+        }
+        if ((pos % 2 == 0 && pos % 8 != 0) && (state[2] == state[4] && state[4] == state[6])) {
+            //center box clicked and non principle diagonal checking
+            return true;
         }
         int col = pos % 3;
         int col0Pos = pos - col;
