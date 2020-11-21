@@ -6,45 +6,189 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="@dimen/padding_root"
+    android:layout_weight="12">
 
     <TextView
-        android:layout_marginTop="30dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to TikTakToe"
+        android:text="@string/welcome_text"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="@dimen/heading_text"
         android:fontFamily="cursive"
-        android:padding="20dp"/>
+        />
     <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="0dp"
+        android:weightSum="2">
         <TextView
+            android:textStyle="italic"
+            android:gravity="center_vertical"
+            android:id="@+id/player1"
             android:fontFamily="monospace"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Player 1(0)"
-            android:textSize="20sp"/>
+            android:text="@string/player1"
+            android:textSize="@dimen/body_text"
+            android:textAlignment="textStart"
+            tools:ignore="RtlCompat" />
         <TextView
+            android:textStyle="italic"
+            android:gravity="center_vertical"
+            android:id="@+id/player2"
             android:fontFamily="monospace"
-            android:textAlignment="viewEnd"
+            android:textAlignment="textEnd"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Player 1(X)"
-            android:textSize="20sp"/>
+            android:textSize="@dimen/body_text"
+            tools:ignore="RtlCompat" />
     </LinearLayout>
     <LinearLayout
-        android:layout_marginVertical="100dp"
-        android:layout_marginHorizontal="10dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textStyle="italic"
+            android:id="@+id/curr_turn"
+            android:fontFamily="monospace"
+            android:textSize="@dimen/body_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center_vertical"
+            android:text="@string/curr_turn" />
+
+        <ImageButton
+            android:layout_weight="1"
+            android:id="@+id/swapPlayer"
+            android:background="#00ffffff"
+            android:onClick="swapPlayer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/swap24dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_marginVertical="@dimen/grid_margin_ver"
+        android:layout_weight="9"
+        android:orientation="vertical"
         android:background="@drawable/grid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:weightSum="3">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:onClick="click"
+                android:tag="0"
+                android:layout_margin="@dimen/dimen_box"
+                android:id="@+id/box1"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/box2"
+                android:onClick="click"
+                android:tag="1"
+                android:layout_margin="@dimen/dimen_box"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/box3"
+                android:onClick="click"
+                android:tag="2"
+                android:layout_margin="@dimen/dimen_box"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:id="@+id/box4"
+                android:onClick="click"
+                android:layout_margin="@dimen/dimen_box"
+                android:tag="3"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/box5"
+                android:onClick="click"
+                android:layout_margin="@dimen/dimen_box"
+                android:tag="4"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/box6"
+                android:onClick="click"
+                android:layout_margin="@dimen/dimen_box"
+                android:tag="5"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:id="@+id/box7"
+                android:onClick="click"
+                android:layout_margin="@dimen/dimen_box"
+                android:tag="6"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/box8"
+                android:onClick="click"
+                android:layout_margin="@dimen/dimen_box"
+                android:tag="7"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/box9"
+                android:onClick="click"
+                android:layout_margin="@dimen/dimen_box"
+                android:tag="8"
+                android:padding="@dimen/dimen_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

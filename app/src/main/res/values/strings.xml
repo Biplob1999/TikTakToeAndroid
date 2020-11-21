@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tik Tak Toe</string>
+    <string name="player1">Player 1(0)</string>
+    <string name="player2">Player 1(X)</string>
+    <string name="welcome_text">Welcome to TikTakToe</string>
+    <string name="curr_turn">Current Turn: Player1</string>
 </resources>
